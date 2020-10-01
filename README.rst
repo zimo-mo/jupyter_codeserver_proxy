@@ -11,4 +11,4 @@ in a JupyterHub / Binder environment.
 Installing code-server
 ================
  
-See ![code-server](https://github.com/cdr/code-server)
+See [code-server](https://github.com/cdr/code-server)
