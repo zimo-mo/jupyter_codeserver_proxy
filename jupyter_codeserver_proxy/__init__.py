@@ -17,14 +17,18 @@ def setup_codeserver():
         if working_dir is None:
             working_dir = os.getenv("JUPYTER_SERVER_ROOT", ".")
 
-        return [full_path, '--port=' + str(port), "--allow-http", "--auth", "none", working_dir ]
+        return [full_path, "--bind-addr", f"0.0.0.0:{port}",
+                "--auth", "none", "--show-versions", working_dir]
 
     return {
         'command': _codeserver_command,
         'timeout': 20,
+        'absolute_url': False,
+        'new_browser_tab': False,
         'launcher_entry': {
             'title': 'VS Code IDE',
-            'icon_path': os.path.join(os.path.dirname(os.path.abspath(__file__)),
+            'icon_path': os.path.join(os.path.dirname(
+                                            os.path.abspath(__file__)),
                                       'icons', 'vscode.svg')
         }
     }
